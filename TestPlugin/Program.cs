@@ -2,6 +2,8 @@
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Threading;
+using Castle.Windsor;
+using Castle.Windsor.Installer;
 using TestPlugin.Interfaces;
 
 namespace TestPlugin
@@ -11,7 +13,10 @@ namespace TestPlugin
 
         static void Main(string[] args)
         {
-            var myTest = new MyTest();
+            var container = new WindsorContainer();
+            container.Install(FromAssembly.This());
+
+            var myTest = container.Resolve<IMyTest>();
 
             myTest.Test.TestMethod();
             myTest.Test2.TestMethod();
@@ -20,43 +25,52 @@ namespace TestPlugin
         }
     }
 
-    public class MyTest
+    public class MyTest : IMyTest
     {
-        public MyTest()
+        public MyTest(ITest test, ITest2 test2)
         {
-            Resolver.Instance.ResolveType(this);
+            Test = test;
+            Test2 = test2;
+
+            //Resolver.Instance.ResolveType(this);
         }
 
-        [Import(typeof(ITest))]
+        //[Import(typeof(ITest))]
         public ITest Test { get; set; }
 
 
-        [Import(typeof(ITest2))]
+        //[Import(typeof(ITest2))]
         public ITest2 Test2 { get; set; }
     }
 
-    public class Resolver
+    //public class Resolver
+    //{
+    //    private static readonly Lazy<Resolver> _instance = new Lazy<Resolver>(() => new Resolver(), LazyThreadSafetyMode.ExecutionAndPublication);
+    //    private readonly CompositionContainer container;
+
+    //    private Resolver()
+    //    {
+    //        var catalog = new AggregateCatalog();
+    //        catalog.Catalogs.Add(new AssemblyCatalog(typeof(Resolver).Assembly));
+    //        catalog.Catalogs.Add(new DirectoryCatalog(@"C:\SRC\Tests\TestPlugin\TestPlugin.Concrete\bin\Debug")); //Caminho das DLL...
+
+    //        container = new CompositionContainer(catalog);
+    //    }
+
+    //    public static Resolver Instance
+    //    {
+    //        get { return _instance.Value; }
+    //    }
+
+    //    public void ResolveType(object instance)
+    //    {
+    //        container.ComposeParts(instance);
+    //    }
+    //}
+
+    public interface IMyTest
     {
-        private static readonly Lazy<Resolver> _instance = new Lazy<Resolver>(() => new Resolver(), LazyThreadSafetyMode.ExecutionAndPublication);
-        private readonly CompositionContainer container;
-
-        private Resolver()
-        {
-            var catalog = new AggregateCatalog();
-            catalog.Catalogs.Add(new AssemblyCatalog(typeof(Resolver).Assembly));
-            catalog.Catalogs.Add(new DirectoryCatalog(@"C:\SRC\Tests\TestPlugin\TestPlugin.Concrete\bin\Debug")); //Caminho das DLL...
-
-            container = new CompositionContainer(catalog);
-        }
-
-        public static Resolver Instance
-        {
-            get { return _instance.Value; }
-        }
-
-        public void ResolveType(object instance)
-        {
-            container.ComposeParts(instance);
-        }
+        ITest Test { get; set; }
+        ITest2 Test2 { get; set; }
     }
 }
