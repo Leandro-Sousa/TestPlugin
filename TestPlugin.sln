@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin", "TestPlugin\TestPlugin.csproj", "{3CA5EC4D-BC92-4ED3-A515-B003CDCA725C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin.Interfaces", "TestPlugin.Interfaces\TestPlugin.Interfaces.csproj", "{72405EA2-0630-449B-8813-81C82BC5237B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin.Concrete", "TestPlugin.Concrete\TestPlugin.Concrete.csproj", "{64F2DAFF-F9DD-4134-9F7B-57F7BC7DB81D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CA5EC4D-BC92-4ED3-A515-B003CDCA725C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CA5EC4D-BC92-4ED3-A515-B003CDCA725C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CA5EC4D-BC92-4ED3-A515-B003CDCA725C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CA5EC4D-BC92-4ED3-A515-B003CDCA725C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72405EA2-0630-449B-8813-81C82BC5237B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72405EA2-0630-449B-8813-81C82BC5237B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72405EA2-0630-449B-8813-81C82BC5237B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72405EA2-0630-449B-8813-81C82BC5237B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64F2DAFF-F9DD-4134-9F7B-57F7BC7DB81D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64F2DAFF-F9DD-4134-9F7B-57F7BC7DB81D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64F2DAFF-F9DD-4134-9F7B-57F7BC7DB81D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64F2DAFF-F9DD-4134-9F7B-57F7BC7DB81D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
